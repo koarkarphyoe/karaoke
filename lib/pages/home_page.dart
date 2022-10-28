@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:karaoke/itemsView/vertical_scroll_view.dart';
+import 'package:karaoke/resources/strings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,9 +9,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HomePage"),
+        elevation: 0,
+        title: Text(homePageTitleText),
         centerTitle: true,
       ),
+      body: VerticalScrollView(),
     );
   }
 }
