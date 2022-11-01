@@ -6,7 +6,7 @@ part of 'response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Response _$ResponseFromJson(Map<String, dynamic> json) => Response(
+ApiResponse _$ApiResponseFromJson(Map<String, dynamic> json) => ApiResponse(
       kind: json['kind'] as String?,
       etag: json['etag'] as String?,
       nextPageToken: json['nextPageToken'] as String?,
@@ -19,7 +19,8 @@ Response _$ResponseFromJson(Map<String, dynamic> json) => Response(
           .toList(),
     );
 
-Map<String, dynamic> _$ResponseToJson(Response instance) => <String, dynamic>{
+Map<String, dynamic> _$ApiResponseToJson(ApiResponse instance) =>
+    <String, dynamic>{
       'kind': instance.kind,
       'etag': instance.etag,
       'nextPageToken': instance.nextPageToken,

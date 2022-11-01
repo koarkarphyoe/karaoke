@@ -1,11 +1,10 @@
-
 import 'package:json_annotation/json_annotation.dart';
 import 'package:karaoke/model/vo/items_vo.dart';
 import 'package:karaoke/model/vo/page_info_vo.dart';
 part 'response.g.dart';
 
 @JsonSerializable()
-class Response {
+class ApiResponse {
   @JsonKey(name: "kind")
   String? kind;
   @JsonKey(name: "etag")
@@ -18,7 +17,7 @@ class Response {
   PageInfoVO? pageInfo;
   @JsonKey(name: "items")
   List<ItemsVO>? items;
-  Response(
+  ApiResponse(
       {required this.kind,
       required this.etag,
       required this.nextPageToken,
@@ -26,7 +25,7 @@ class Response {
       required this.pageInfo,
       required this.items});
 
-  factory Response.fromJson(Map<String, dynamic> json) =>
-      _$ResponseFromJson(json);
-  Map<String, dynamic> toJson() => _$ResponseToJson(this);
+  factory ApiResponse.fromJson(Map<String, dynamic> json) =>
+      _$ApiResponseFromJson(json);
+  Map<String, dynamic> toJson() => _$ApiResponseToJson(this);
 }
