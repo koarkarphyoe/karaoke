@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:karaoke/itemsView/video_item_view.dart';
+import 'package:karaoke/model/vo/items_vo.dart';
 import 'package:karaoke/resources/dimens.dart';
 
 class VerticalScrollView extends StatelessWidget {
-  
-  const VerticalScrollView({
+  final List<ItemsVO> itemList;
+  const VerticalScrollView(this.itemList,{
     Key? key,
   }) : super(key: key);
 
@@ -12,50 +14,12 @@ class VerticalScrollView extends StatelessWidget {
     return ListView.builder(
       padding: const EdgeInsets.all(marginMedium),
       scrollDirection: Axis.vertical,
-      itemCount: 10,
-      itemBuilder: ((context, index) => Container(
+      itemCount: itemList.length,
+      itemBuilder: ((context, index) =>  SizedBox(
             height: 100,
             width: MediaQuery.of(context).size.width,
-            child: VideoItemView(),
+            child: VideoItemView(itemList[index]),
           )),
-    );
-  }
-}
-
-class VideoItemView extends StatelessWidget {
-  const VideoItemView({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      elevation: 5,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image(
-            image: NetworkImage(
-                "https://th.bing.com/th/id/OIP.8t1WtYLAPVB189hu7pCP3gHaHa?pid=ImgDet&rs=1"),
-          ),
-          SizedBox(
-            width: marginMedium,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Title"),
-              SizedBox(
-                height: marginMedium,
-              ),
-              Text("Description")
-            ],
-          )
-        ],
-      ),
     );
   }
 }

@@ -10,15 +10,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
-      value: HomeBloc(),
-      child: Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: Text(homePageTitleText),
-          centerTitle: true,
-        ),
-        body: VerticalScrollView(),
-      ),
-    );
+        value: HomeBloc(),
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            title: const Text(homePageTitleText),
+            centerTitle: true,
+          ),
+          body: Consumer<HomeBloc>(
+            builder: (BuildContext context, homeBloc, Widget? child) {
+              return (homeBloc.videoList != null)
+                  ? VerticalScrollView(homeBloc.videoList!)
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
+          ),
+        ));
   }
 }
