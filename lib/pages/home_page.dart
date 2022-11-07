@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:karaoke/bloc/home_bloc.dart';
 import 'package:karaoke/itemsView/vertical_scroll_view.dart';
+import 'package:karaoke/pages/player_page.dart';
 import 'package:karaoke/resources/strings.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,19 @@ class HomePage extends StatelessWidget {
           body: Consumer<HomeBloc>(
             builder: (BuildContext context, homeBloc, Widget? child) {
               return (homeBloc.videoList != null)
-                  ? VerticalScrollView(homeBloc.videoList!)
+                  // ? VerticalScrollView(homeBloc.videoList!, (videoId) {
+                  //     print("OnTapVideoId is => $videoId");
+                  //   })
+                  ? VerticalScrollView(homeBloc.videoList!,
+                      onTapVideo: (videoId, videoTitle) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => PlayerPage(
+                                    videoID: videoId,
+                                    videoTitle: videoTitle,
+                                  ))));
+                    })
                   : const Center(
                       child: CircularProgressIndicator(),
                     );
