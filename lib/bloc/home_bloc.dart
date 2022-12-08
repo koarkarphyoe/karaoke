@@ -9,7 +9,7 @@ class HomeBloc extends ChangeNotifier {
   List<ItemsVO>? videoList;
 
   HomeBloc() {
-    dataModel.getVideoList("မလာပါနဲ့ (Karaoke Version)").then((value) {
+    dataModel.getVideoList("Counting Stars (Karaoke Version)").then((value) {
       videoList = value;
       notifyListeners();
     });

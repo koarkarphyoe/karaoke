@@ -13,10 +13,31 @@ class HomePage extends StatelessWidget {
     return ChangeNotifierProvider.value(
         value: HomeBloc(),
         child: Scaffold(
+          drawer: Drawer(
+            child: ListTile(
+              title: Text(
+                "Hello",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
           appBar: AppBar(
             elevation: 0,
             title: const Text(homePageTitleText),
             centerTitle: true,
+            actions: const [
+              Padding(
+                padding: EdgeInsets.only(right: 16),
+                child: Icon(
+                  Icons.search,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              )
+            ],
           ),
           body: Consumer<HomeBloc>(
             builder: (BuildContext context, homeBloc, Widget? child) {
